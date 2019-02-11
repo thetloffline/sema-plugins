@@ -24,12 +24,6 @@ You should have received a copy of the GNU General Public License
 along with (Plugin Name). If not, see (http://link to your plugin license).
 */
 
-function set_featured_image($pieces, $is_new_item) {
-    $pieces[ 'fields' ][ 'post_thumbnail' ][ 'value' ] = $pieces[ 'fields' ][ 'featured_img' ][ 'value' ];
-    return $pieces;
-} 
-add_filter('pods_api_pre_save_pod_item_project', 'set_featured_image', 10, 2);
-
 function get_the_author_full_name($userID) {
 	$first_name = get_the_author_meta( 'first_name', $userID );
 	$last_name = get_the_author_meta( 'last_name', $userID );
@@ -43,6 +37,7 @@ function institute_tax_update( $pieces, $is_new_item, $id ) {
 	$institute_term_string_array = $pieces[ 'fields' ][ 'institute_prim' ][ 'value' ];
 	$category_term_string_array = $pieces[ 'fields' ][ 'project_category' ][ 'value' ];
     $supervisor_term_string_array = $pieces[ 'fields' ][ 'project_supervisor' ][ 'value' ];
+	$featured_image_id = key($pieces[ 'fields' ][ 'featured_img' ][ 'value' ]);
 	
 	$institute_term_int_array = [];
 	$category_term_int_array = [];
@@ -59,6 +54,7 @@ function institute_tax_update( $pieces, $is_new_item, $id ) {
 	wp_set_object_terms( $id, $institute_term_int_array, 'institute', false );
 	wp_set_object_terms( $id, $category_term_int_array, 'category', false );
 	wp_set_object_terms( $id, $supervisor_term_int_array, 'supervisor', false );
+	set_post_thumbnail($id, $featured_image_id);
 }
 
 ?>
