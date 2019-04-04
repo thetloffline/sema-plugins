@@ -34,7 +34,7 @@ function institute_tax_update( $pieces, $is_new_item, $id ) {
 	
 	//get values from pods - they are arrays of strings
 
-	$institute_term_string_array = $pieces[ 'fields' ][ 'institute_prim' ][ 'value' ];
+	$institute_term_string_array = $pieces[ 'fields' ][ 'project_institute' ][ 'value' ];
 	//$category_term_string_array = $pieces[ 'fields' ][ 'project_category' ][ 'value' ];
     $supervisor_term_string_array = $pieces[ 'fields' ][ 'project_supervisor' ][ 'value' ];
 	//$tags_term_string_array = $pieces[ 'fields' ][ 'project_tags' ][ 'value' ];
