@@ -48,10 +48,9 @@ function institute_tax_update( $pieces, $is_new_item, $id ) {
 	//$tags_term_int_array = [];
 	
 	//convert strings in arrays into ints and put them into int arrays
-
-	foreach($institute_term_string_array as $its){$institute_term_int_array[] = intval($its);}
+	if (!empty($institute_term_string_array)){foreach($institute_term_string_array as $its){$institute_term_int_array[] = intval($its);}}
 	//foreach($category_term_string_array as $cts){$category_term_int_array[] = intval($cts);}
-	foreach($supervisor_term_string_array as $sts){$supervisor_term_int_array[] = intval($sts);}
+	if (!empty($institute_term_string_array)){foreach($supervisor_term_string_array as $sts){$supervisor_term_int_array[] = intval($sts);}}
 	//foreach($tags_term_string_array as $tts){$tags_term_int_array[] = intval($tts);}
 	
 	//to avoid errors make array null if empty
